@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class GuessingNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("-------------Welcome to the world of number guessing game----------------");
+        System.out.println("Where you have to guess the number in between 1 to 100 inclusive");
+        int comGuess = (int) (Math.random()*100) + 1;
+        System.out.println("Enter input : ");
+        int limit = 5; int count = 0;
+        int guess;
+        do{
+            guess = sc.nextInt();
+            count++;
+            if(count == limit + 1){
+                System.out.println("Oops, limit exceed, Your score is zero");
+                break;
+            }
+            if(guess > comGuess) System.out.println("Too high, enter input again");
+            else if(guess < comGuess) System.out.println("Too low, enter input again");
+            else {
+                System.out.println("You win");
+                switch (count){
+                    case 1 -> System.out.println("Points : " + 100);
+                    case 2 -> System.out.println("Points : " + 80);
+                    case 3 -> System.out.println("Points : " + 60);
+                    case 4 -> System.out.println("Points : " + 40);
+                    case 5 -> System.out.println("Points : " + 20);
+                }
+
+            }
+        }while(guess != comGuess);
+    }
+}
